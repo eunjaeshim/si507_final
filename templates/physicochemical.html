@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF8" />
+    <title>Physicochemical Properties</title>
+    <style>
+        table, th, td {
+            border : 1px solid black;
+            border-collapse : collapse;
+            padding : 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Below are the physicochemical properties of {{name}}</h1>
+    <img src={{url}} alt="No structure retrieved">
+    <table>
+        <tr>
+            <td align="center">Property</td>
+            <td align="center">Value</td>
+            <td align="center">Lipinski's rule</td>
+        </tr>
+        <tr>
+            <td>Molecular Formula</td>
+            <td>{{formula}}</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Molecular Weight</td>
+            <td>{{mw}}</td>
+            <td>500</td>
+        </tr>
+        <tr>
+            <td>XlogP</td>
+            <td>{{xlogp}}</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Topological Polar Surface Area</td>
+            <td>{{tpsa}}</td>
+            <td>140</td>
+        </tr>
+        <tr>
+            <td>Number of Hydrogen Bond Donors</td>
+            <td>{{hbd}}</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Number of Hydrogen Bond Acceptors</td>
+            <td>{{hba}}</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Number of Rotatable Bonds</td>
+            <td>{{rb}}</td>
+            <td>10</td>
+        </tr>
+    </table>
+
+    <p>How many properties does {{name}} satisfy? To learn more : <a href="https://en.wikipedia.org/wiki/Lipinski%27s_rule_of_five">Lipinski's rule of five</a>!</p>
+
+    <p><a href="/">Go back</a></p>
+</body>
+
+</html>

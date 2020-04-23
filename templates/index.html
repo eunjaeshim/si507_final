@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF8" />
+    <title>Drug Navigator Home</title>
+</head>
+
+<body>
+    <h1>Welcome to the Drug Navigator!</h1>
+    <p>Explore the vast space of drug ingredients!</p>
+    <p>Please type in a name of a "drug molecule" below and select the information you are interested in retrieving. </p>
+    <form action='/results' method='POST'>
+        <p>
+            <input name="drug_name" type="text" />
+        </p>
+        <p>
+            Information of interest: <br />
+            <input type='radio' name='choice' value='choice1'>Physicochemical Properties<br />
+            <input type='radio' name='choice' value='choice2'>Generic Products Including The Drug<br />
+            <input type='radio' name='choice' value='choice3'>Consumer Warning<br />
+            <input type='radio' name='choice' value='choice4'>Utilization in Various States<br />
+        </p>
+
+        <input type='submit' value='Get Information' />
+    </form>
+</body>
+
+</html>

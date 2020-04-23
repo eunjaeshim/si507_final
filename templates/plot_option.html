@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF8" />
+    <title>Further specification</title>
+</head>
+
+<body>
+    <h1>Please specify your plot options</h1>
+
+    <form action='/results/plot' method='POST'>
+        <p>
+            Please enter the drug name again : 
+            <input name="drug_name" type="text" />
+        </p>
+        <p>
+            Which quarter in 2018 would you like to plot? <br />
+            <input type='radio' name='quarter' value='1'>1<br />
+            <input type='radio' name='quarter' value='2'>2<br />
+            <input type='radio' name='quarter' value='3'>3<br />
+            <input type='radio' name='quarter' value='4'>4<br />
+        </p>
+
+        <p>
+            Which information would you like to plot? <br />
+            <input type='radio' name='info' value='UnitsReimbursed'>Units Reimbursed<br />
+            <input type='radio' name='info' value='AmountReimbursed'>Amount Reimbursed<br />
+            <input type='radio' name='info' value='PrescriptionCount'>Prescription Count<br />
+        </p>
+        <input type='submit' value='Plot' />
+    </form>
+    <p><a href="/">Go back</a></p>
+</body>
+
+</html>

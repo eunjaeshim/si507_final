@@ -124,8 +124,27 @@ def get_physical_properties(ingredient):
     url = PUBCHEM_URL + ingredient + PROPERTIES
     result = make_request_with_cache(url)
     properties = result["PropertyTable"]["Properties"][0]
-
+    
     return properties
+
+
+def get_molecular_picture(ingredient) :
+    ''' retrieves the 3d picture of the ingredient from PUBCHEM.
+
+    Parameters
+    ----------
+    ingredient : string
+        name of the ingredient
+
+    Returns
+    -------
+    pic_url : string
+        url of image source
+    '''
+
+    pic_url = PUBCHEM_URL + ingredient + "/PNG"
+
+    return pic_url
 
 
 def get_rxcui(ingredient):
@@ -162,8 +181,8 @@ def get_products(rxcui):
     
     Returns
     -------
-    product_dict : list of tuples
-        (brand name, ingredients and their strength)
+    product_dict : dictionary
+        brand name : ingredients and their strength
     '''
 
     url = PRESCRIBE_URL + f"/{rxcui}/allrelated.json"
@@ -197,7 +216,7 @@ def get_howandwhat(rxcui):
 
     Returns
     -------
-    howandwhat : dictionary
+    howandwhat : list of tuples
         {"symptoms" : [(symptom, symptom_class)], "mechanisms": [mech]}
     '''
 
@@ -300,17 +319,44 @@ def get_warnings(drug_pages) :
     return drug_warnings
 
 
+def get_new_warning(drug_name) : 
+    ''' Returns consuming warning of drug not in cache.
+
+    Parameters
+    ----------
+    drug_name : string
+
+    Returns
+    -------
+    warnings : dict
+    '''
+
+    url = SIDE_EFFECT_URL + "/sfx/" + f"{drug_name}-side-effects.html"
+    response = make_request_with_cache(url)
+    soup = BeautifulSoup(response, 'html.parser')
+    warnings = []
+    try:
+        parent = soup.find('div', class_='blackboxWarning')
+        warning_content = parent.find_all('p')
+        for warning in warning_content :
+            warnings.append(warning.get_text())
+        return warnings
+    except:
+        return None
+        
+
 CACHE_DICT = open_cache()
 
-comp = "sodium tetradecyl sulfate"
-properties = get_physical_properties(comp)
-rxcui = get_rxcui(comp)
-if rxcui != None :
-    product_list = get_products(rxcui)
-    howandwhat = get_howandwhat(rxcui)
-    print(product_list)
-    print(howandwhat)
+if __name__ == '__main__':
+    comp = "sodium tetradecyl sulfate"
+    properties = get_physical_properties(comp)
+    rxcui = get_rxcui(comp)
+    if rxcui != None :
+        product_list = get_products(rxcui)
+        howandwhat = get_howandwhat(rxcui)
+        print(product_list)
+        print(howandwhat)
 
-pages = get_warning_pages()
-warnings = get_warnings(pages)
+    pages = get_warning_pages()
+    warnings = get_warnings(pages)
 

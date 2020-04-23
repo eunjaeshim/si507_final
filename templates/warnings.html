@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF8" />
+    <title>Consumer Warnings</title>
+</head>
+
+<body>
+    <h1>Consumer warning statement for {{name}}</h1>
+    {% if warnings %}
+        {% for t in warnings %}
+        <p>{{t}}</p>
+        {% endfor %}
+    
+    {% else %}
+    <p>There are no particular warning!</p>
+    {% endif %}
+    <p><a href="/">Go back</a></p>
+</body>
+
+</html>

@@ -61,12 +61,12 @@ def load_drugs() :
 
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
-    counter = 0
+    #counter = 0
 
     for row in csv_reader : 
         cur.execute(insert_drug_sql, [row[1].lower(),row[3]])
-        counter += 1
-        if counter == 500 : break   #TODO : will probably have to deleter it later
+        #counter += 1
+        #if counter == 500 : break  
 
     conn.commit()
     conn.close()
@@ -93,7 +93,7 @@ def load_utilization() :
 
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
-    counter = 0
+    #counter = 0
     cur.execute(select_drugname_sql)
     names = [x[0] for x in cur.fetchall()]
 
@@ -107,7 +107,8 @@ def load_utilization() :
             product_id = None
             if res is not None :
                 product_id = res[0]
-
+            if row[6] == "XX" :
+                continue
             cur.execute(insert_utility_sql, [
                 row[6], #State
                 row[1], #Quarter
@@ -116,13 +117,14 @@ def load_utilization() :
                 row[10], #Number of prescriptions
                 row[11] # Amount reimbursed
             ])
-            counter += 1
-            if counter == 500 : break #TODO : will need to erase this
+            #counter += 1
+            #if counter == 500 : break #TODO : will need to erase this
 
     conn.commit()
     conn.close()
 
 
-create_db()
-load_drugs()
-load_utilization()
+if __name__ == '__main__':
+    create_db()
+    load_drugs()
+    load_utilization()

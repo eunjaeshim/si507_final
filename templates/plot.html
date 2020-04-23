@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF8"/>
+    <title>State Utilization Plot</title>
+</head>
+<body>
+    {% if not plot_div %}
+    <h1>There are no data to display.</h1>
+    {% else %}
+    <h1>Plot of {{name}} {{info}} in 2018 Q{{quarter}} in Different States</h1>
+    {{plot_div | safe}}
+    {% endif %}
+    <p><a href="/">Go back to home</a></p>
+</body>
+</html>

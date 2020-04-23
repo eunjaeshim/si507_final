@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF8" />
+    <title>Generic Products</title>
+</head>
+
+<body>
+    <h1>What {{name}} is effective for</h1>
+    <ul>
+    {% for a, b in symptoms %}
+        <li>Symptom "{{a}}" in class {{b}}</li>
+    {% endfor %}
+    </ul>
+    <h2>{{name}}'s mode of action</h2>
+    <ul>
+    {% for c in mechanisms %}
+        <li>{{c}}</li>
+    {% endfor %}
+    </ul>
+    <h3>Generic products that contain {{name}} as an active ingredient.</h3>
+    <ul>
+    {% for k, v in products %}
+        <li>{{k}} - {{v}}</li>
+    {% endfor %}
+    </ul>
+    <p><a href="/">Go back</a></p>
+</body>
+
+</html>
