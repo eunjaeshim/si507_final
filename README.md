@@ -6,13 +6,14 @@ Apr 22, 2020
 
 The python scripts require the installation of the following python packages.
 flask, sqlite3, plotly(.graph_objs in particular), bs4, requests
+No API keys are needed.
 
 The program is made of three python scripts.
 
 1. database_schema.py
 The structure_links.csv (available https://www.drugbank.ca/releases/latest#structures) has information on >10000 drug compounds.
 The State_Drug_Utilization_Data_2018.csv (available https://catalog.data.gov/dataset/state-drug-utilization-data-2018) has >1.5M records of drug utilization in the year of 2018 in different states.
-Therefore the two files are not on github, but you can easily download them. Running the database_schema.py will produce the database that is necessary for running the app.
+Therefore the two files are not push github, but you can easily download them. Running the database_schema.py will produce the database that is necessary for running the app. The result, drugs_utility.sqlite was pushed to github despite it being in .gitignore. The size is ~62MB, so please download at your discreet.
 
 2. checkpoint.py
 This script has the functions that are necessary for making requests and caching appropriate responses. 
