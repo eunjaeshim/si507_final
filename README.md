@@ -8,7 +8,8 @@ The python scripts require the installation of the following python packages.
 flask, sqlite3, plotly(.graph_objs in particular), bs4, requests
 No API keys are needed.
 
-The program is made of three python scripts.
+The program is made of three python scripts and a templates folder.
+Download all of them into the same directory.
 
 1. database_schema.py
 The structure_links.csv (available https://www.drugbank.ca/releases/latest#structures) has information on >10000 drug compounds.
